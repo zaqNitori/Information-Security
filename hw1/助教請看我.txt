@@ -1,0 +1,39 @@
+caesar.cpp 是凱薩密碼的加解密演算法
+shift為輸入位移，必須輸入正整數
+plaintext是輸入明文，必須輸入英文字母
+大小寫沒差別，空格可有可無
+都會全部被轉化為小寫密文書出，
+然後再轉回明文。
+
+
+
+vigenere.cpp 是字母頻率攻擊的演算法
+p[]是從維基百科找來的機率並且事先*10
+caesar是取得明文再轉成密文，輸入方法跟凱薩加密一樣
+然後因為是凱薩所以暴力解25次，一定會可以在前10個可能的找到正確解
+
+將密文依序先轉回明文後，乘上字母的出現機率，
+為了不讓float太小導致overflow，每個一段時間就*10000
+然後將配對的明文跟轉換後的權重push進到vector
+25次做完後，sort一遍，
+然後將前10大的print出來。
+
+文章越長效果越準確
+
+s-des.cpp 簡易DES加解密演算法
+
+doPermutation	進行位置變換
+keyShift	做左移動作
+getRow		取得第4跟第1個bit並且轉換成row
+getColumn	取得第2跟第3個bit並且轉換成column
+funcF		演算法的critical function
+funcFK		跟funcF做Xor
+
+encrypt		加密演算法
+decrypt		解密演算法
+
+Line 6		要被加密的明文
+Line 7		題目給的密文
+Line 8		運算用的Key
+
+t107590026@ntut.org.tw
