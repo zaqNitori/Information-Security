@@ -79,7 +79,7 @@ int getRow(int n)
 
 int getColumn(int n)
 {
-    return (((n&(1<<2))<<1) | (n&(1<<1)));
+    return ((n & 6)>>1);
 }
 
 int funcF(int rp,int key)
