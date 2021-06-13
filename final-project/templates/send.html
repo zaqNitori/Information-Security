@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>send html</title>
+</head>
+<body>
+	{% if name == "" %}
+	<form method="post">
+		<input type="text" name="sender">
+        <input type="text" name="receiver">
+        <input type="text" name="rsaKey">
+        <input type="text" name="content">
+		<input type="submit" name="send" value="送出">
+	</form>
+	{% else %}
+	<p>Hello,{{name}}</p>
+	{% endif %}
+</body>
+</html>
