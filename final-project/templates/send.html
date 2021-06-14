@@ -6,15 +6,26 @@
 </head>
 <body>
 	{% if name == "" %}
+        {% if errorMsg  %}
+            <h2 style="color: red;">{{errorMsg}}</h2>
+        {% endif %}
 	<form method="post">
-		<input type="text" name="sender">
-        <input type="text" name="receiver">
-        <input type="text" name="rsaKey">
-        <input type="text" name="content">
-		<input type="submit" name="send" value="送出">
+        <label for="Sender">Sender Account:</label><br>
+		<input type="text" name="sender" required><br><br>
+        <label for="Receiver">Receiver Account:</label><br>
+        <input type="text" name="receiver" required><br><br>
+        <label for="Private Key">Private key:</label><br>
+        <textarea id="privateKey" name="PrivateKey" rows="6" cols="50" placeholder="Input your PrivateKey:" required></textarea><br><br>
+		<label for="Title">Title:</label><br>
+        <input type="text" name="title" required><br><br>
+        <label for="Contents">Contents:</label><br>
+        <textarea id="plaintext" name="plaintext" rows="6" cols="50" placeholder="Input your PlainText:"></textarea><br><br>
+		<input type="submit" name="send" value="SEND">
 	</form>
-	{% else %}
-	<p>Hello,{{name}}</p>
 	{% endif %}
+    {% if name == "SEND" %}
+    <h2>Your Email Send to {{receiver}} Successfully!</h2>
+    {% endif %}
+    <a href="/">Go Back</a>
 </body>
 </html>

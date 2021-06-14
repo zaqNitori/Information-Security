@@ -1,10 +1,24 @@
-import os
-from dotenv import load_dotenv
+from Crypto.PublicKey import RSA
 
+key = RSA.generate(1024)
+pvk = key.exportKey()
+pbk = key.publickey().exportKey()
+  
+i = 12
 
-print('Before Load()' , os.getenv('NTUT_MAIL_ACCOUNT'))
+k = RSA.importKey(pvk)
+print('e = ',k.e)
+print('n = ',k.n)
+print('d = ',k.d)
 
-load_dotenv()
+sig = pow(12,k.d,k.n)
+sig = sig % k.n
+print(sig)
 
-print('After Load()' , os.getenv('NTUT_MAIL_ACCOUNT'))
-print('After Load()' , os.getenv('APPDATA'))
+k = RSA.importKey(pbk)
+print('e = ',k.e)
+print('n = ',k.n)
+
+ans = pow(sig,k.e,k.n)
+ans = ans % k.n
+print(ans)

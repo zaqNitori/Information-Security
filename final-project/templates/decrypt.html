@@ -7,11 +7,30 @@
 <body>
 	{% if name == "" %}
 	<form method="post">
-		<input type="text" name="user">
-		<input type="submit" name="send" value="送出">
+        <label for="Contents">Contents To Decrypt:</label><br>
+        <textarea id="CipherText" name="CipherText" rows="6" cols="50" placeholder="Input your CipherText:" required></textarea><br>
+        <label for="Private Key">Your Private Key:</label><br>
+        <textarea id="PrivateKey" name="PrivateKey" rows="6" cols="50" placeholder="Input your PrivateKey:" required></textarea><br><br>
+		<input type="submit" name="send" value="DECRYPT">
 	</form>
-	{% else %}
-	<p>Hello,{{name}}</p>
-	{% endif %}
+    {% endif %}
+    {% if name == "DECRYPT" %}
+    <form method="post">
+        <label for="Contents">Contents After Decrypt:</label><br>
+        <textarea id="CipherText" name="CipherText" rows="6" cols="50" >{{Contents}}</textarea><br><br>
+        <label for="Sender">Sender Account:</label><br>
+		<input type="text" name="sender" required><br><br>
+        <label for="mac">Identity Authentication:</label><br>
+        <textarea id="mac" name="mac" rows="6" cols="50" placeholder="Input MAC: " required></textarea><br><br>
+        <input type="submit" name="send" value="Authenticate">
+    </form>
+    {% endif %}
+    {% if name == "Authenticate" %}
+    <label for="Contents">Contents After Decrypt:</label>
+    <p>{{Contents}}</p>
+    <p style="color: red;">{{IdentityMsg}}</p>
+    {% endif %}
+    <br>
+    <a href="/">Go Back</a>
 </body>
 </html>

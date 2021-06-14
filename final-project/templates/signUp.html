@@ -1,20 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8">
-<title>SignUp html</title>
+    <link rel="stylesheet" href="setting.css">
+    <meta charset="utf-8">
+    <title>SignUp html</title>
 </head>
+
 <body>
     <h2>Your RSA KEY will send to your email, so please give a valid email account.</h2>
-	{% if user == "" || email == ""%}
+    {% if errorMsg == "SameEmail" %}
+        <p style="color: red;font-size: large;">The Email has already been used, please change a new one!</p>
+    {% endif %}
+
+	{% if name == ""%}
 	<form method="post">
-		<input type="text" name="user">
-        <input type="email" name="email">
-		<input type="submit" name="send" value="送出">
+        <label for="Email">Email:</label><br>
+        <input type="email" name="email" required><br><br>
+		<input type="submit" name="send" value="SEND">
 	</form>
-	{% else %}
-	<h1>Hello,{{name}}</h1>
-    <p>An Email will be send to your email to store your RSA key.</p>
-	{% endif %}
+    {% endif %}
+    <a href="/">Go Back</a>
 </body>
 </html>
